@@ -1,0 +1,67 @@
+explicit span
+.
+a %span[b] c
+
+a%span[b]c
+.
+<p>a <span>b</span> c</p>
+<p>a<span>b</span>c</p>
+.
+
+
+[ ] only should not be parsed
+.
+a [b] c
+.
+<p>a [b] c</p>
+.
+
+other tag
+.
+a %summary[b] c
+.
+<p>a <summary>b</summary> c</p>
+.
+
+
+alias('d' as 'div')
+.
+1 %d[hello] 3
+
+%d[hello]
+.
+<p>1 <div>hello</div> 3</p>
+<p><div>hello</div></p>
+.
+
+
+alias('@' as 'summary')
+.
+1 %@[help] 3
+.
+<p>1 <summary>help</summary> 3</p>
+.
+
+
+escape
+.
+1 %span[a\[b\]c] 3
+.
+<p>1 <span>a[b]c</span> 3</p>
+.
+
+
+inline
+.
+1 %div[2 %span[ab] c*d*e 3] 4
+.
+<p>1 <div>2 <span>ab</span> c<em>d</em>e 3</div> 4</p>
+.
+
+
+nested
+.
+1 %div[2 %span[ab] c*d*e 3] 4
+.
+<p>1 <div>2 <span>ab</span> c<em>d</em>e 3</div> 4</p>
+.

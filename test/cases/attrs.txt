@@ -1,0 +1,30 @@
+span
+.
+1 [23]{.a} 4
+.
+<p>1 <span class="a">23</span> 4</p>
+.
+
+
+other tag
+.
+1 %summary[23]{.b} 4
+.
+<p>1 <summary class="b">23</summary> 4</p>
+.
+
+
+alias ('@' as 'summary')
+.
+1 %@[23]{.b} 4
+.
+<p>1 <summary class="b">23</summary> 4</p>
+.
+
+
+nested
+.
+1 %div[2 %span[ab]{.a} c*d*{.b}e 3]{.c} 4
+.
+<p>1 <div class="c">2 <span class="a">ab</span> c<em class="b">d</em>e 3</div> 4</p>
+.

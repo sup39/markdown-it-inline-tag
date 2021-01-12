@@ -1,0 +1,6 @@
+default-tag (summary)
+.
+1 [2 %span[ab]{.a} c*d*{.b}e 3]{.c} 4
+.
+<p>1 <summary class="c">2 <span class="a">ab</span> c<em class="b">d</em>e 3</summary> 4</p>
+.
