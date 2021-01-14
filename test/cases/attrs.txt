@@ -28,3 +28,11 @@ nested
 .
 <p>1 <div class="c">2 <span class="a">ab</span> c<em class="b">d</em>e 3</div> 4</p>
 .
+
+
+nested link
+.
+[some link like [sup39's homepage](https://sup39.ml)]{.class}
+.
+<p><span class="class">some link like <a href="https://sup39.ml">sup39's homepage</a></span></p>
+.

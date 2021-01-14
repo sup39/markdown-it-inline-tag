@@ -5,7 +5,7 @@
 function pluginInlineTag(md, opts={}) {
   const alias = opts.alias || {};
   const defaultTag = alias[''] || 'span';
-  md.inline.ruler.before('escape', 'inline_tag', (state, a) => {
+  md.inline.ruler.before('escape', 'inline_tag', (state, silent) => {
     const {src, pos, posMax} = state;
     const c0 = src.charCodeAt(pos);
     let posS;
@@ -41,15 +41,18 @@ function pluginInlineTag(md, opts={}) {
     const posE = i;
     // []{} without ()
     if (c0 === 0x5b && src.charCodeAt(posE+1) !== 0x7b) return false;
-    // parse tag content
-    state.pos = posS;
-    state.posMax = posE;
-    state.push('tag_open', tagName, 1);
-    state.md.inline.tokenize(state);
-    state.push('tag_close', tagName, -1);
-    // end
+    // parse tag content if not silent
+    if (!silent) {
+      state.pos = posS;
+      state.posMax = posE;
+      if (!silent) state.push('tag_open', tagName, 1);
+      state.md.inline.tokenize(state, silent);
+      if (!silent) state.push('tag_close', tagName, -1);
+      // end
+      state.posMax = posMax;
+    }
+    // set state.pos only if silent
     state.pos = posE+1;
-    state.posMax = posMax;
     return true;
   });
 };
